@@ -158,7 +158,7 @@
             label="Input Deshabilitado"
             placeholder="No se puede editar"
             [disabled]="true"
-            [value]="'Valor deshabilitado'">
+            [(ngModel)]="disabledValue">
           </app-input>
         </div>
 
@@ -167,7 +167,7 @@
             type="text"
             label="Input Solo Lectura"
             [readonly]="true"
-            [value]="'Solo lectura'">
+            [(ngModel)]="readonlyValue">
           </app-input>
         </div>
 
