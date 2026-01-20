@@ -1,3 +1,334 @@
-<div class="content">
-  <h1>Welcome to {{ title }}!</h1>
+<div class="app-container">
+  <header class="app-header">
+    <h1>{{ title }}</h1>
+    <p class="subtitle">Componente accesible y configurable para Angular</p>
+  </header>
+
+  <main class="app-main">
+    <!-- Section 1: Basic Examples -->
+    <section class="demo-section">
+      <h2>1. Ejemplos Básicos</h2>
+      <p class="section-description">Diferentes tipos de inputs con configuraciones básicas</p>
+
+      <div class="demo-grid">
+        <div class="demo-item">
+          <h3>Input de Texto</h3>
+          <app-input
+            type="text"
+            label="Nombre"
+            placeholder="Ingrese su nombre"
+            [(ngModel)]="textValue"
+            helperText="Ingrese su nombre completo">
+          </app-input>
+          <p class="value-display">Valor: {{ textValue || 'vacío' }}</p>
+        </div>
+
+        <div class="demo-item">
+          <h3>Input de Email</h3>
+          <app-input
+            type="email"
+            label="Correo Electrónico"
+            placeholder="ejemplo@correo.com"
+            [(ngModel)]="emailValue"
+            [required]="true">
+          </app-input>
+          <p class="value-display">Valor: {{ emailValue || 'vacío' }}</p>
+        </div>
+
+        <div class="demo-item">
+          <h3>Input de Número</h3>
+          <app-input
+            type="number"
+            label="Edad"
+            placeholder="18"
+            [(ngModel)]="numberValue"
+            [min]="18"
+            [max]="100">
+          </app-input>
+          <p class="value-display">Valor: {{ numberValue || 'vacío' }}</p>
+        </div>
+
+        <div class="demo-item">
+          <h3>Input de Contraseña</h3>
+          <app-input
+            type="password"
+            label="Contraseña"
+            placeholder="********"
+            [(ngModel)]="passwordValue"
+            helperText="Mínimo 8 caracteres">
+          </app-input>
+          <p class="value-display">Valor: {{ passwordValue ? '***' : 'vacío' }}</p>
+        </div>
+      </div>
+
+      <div class="demo-actions">
+        <button class="btn btn-primary" (click)="onTemplateDrivenSubmit()">
+          Enviar Template-Driven Form
+        </button>
+      </div>
+    </section>
+
+    <!-- Section 2: Sizes -->
+    <section class="demo-section">
+      <h2>2. Tamaños (Sizes)</h2>
+      <p class="section-description">El componente soporta tres tamaños: small, medium, large</p>
+
+      <div class="demo-grid">
+        <div class="demo-item">
+          <app-input
+            type="text"
+            label="Tamaño Small"
+            placeholder="Input pequeño"
+            size="small">
+          </app-input>
+        </div>
+
+        <div class="demo-item">
+          <app-input
+            type="text"
+            label="Tamaño Medium (default)"
+            placeholder="Input mediano"
+            size="medium">
+          </app-input>
+        </div>
+
+        <div class="demo-item">
+          <app-input
+            type="text"
+            label="Tamaño Large"
+            placeholder="Input grande"
+            size="large">
+          </app-input>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Variants -->
+    <section class="demo-section">
+      <h2>3. Variantes de Estilo</h2>
+      <p class="section-description">Tres variantes visuales: outlined, filled, standard</p>
+
+      <div class="demo-grid">
+        <div class="demo-item">
+          <app-input
+            type="text"
+            label="Outlined (default)"
+            placeholder="Variante outlined"
+            variant="outlined">
+          </app-input>
+        </div>
+
+        <div class="demo-item">
+          <app-input
+            type="text"
+            label="Filled"
+            placeholder="Variante filled"
+            variant="filled">
+          </app-input>
+        </div>
+
+        <div class="demo-item">
+          <app-input
+            type="text"
+            label="Standard"
+            placeholder="Variante standard"
+            variant="standard">
+          </app-input>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: States -->
+    <section class="demo-section">
+      <h2>4. Estados</h2>
+      <p class="section-description">Estados: normal, disabled, readonly, error</p>
+
+      <div class="demo-grid">
+        <div class="demo-item">
+          <app-input
+            type="text"
+            label="Input Normal"
+            placeholder="Estado normal">
+          </app-input>
+        </div>
+
+        <div class="demo-item">
+          <app-input
+            type="text"
+            label="Input Deshabilitado"
+            placeholder="No se puede editar"
+            [disabled]="true"
+            [value]="'Valor deshabilitado'">
+          </app-input>
+        </div>
+
+        <div class="demo-item">
+          <app-input
+            type="text"
+            label="Input Solo Lectura"
+            [readonly]="true"
+            [value]="'Solo lectura'">
+          </app-input>
+        </div>
+
+        <div class="demo-item">
+          <app-input
+            type="text"
+            label="Input con Error"
+            placeholder="Campo con error"
+            errorMessage="Este campo tiene un error personalizado">
+          </app-input>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Reactive Form Example -->
+    <section class="demo-section">
+      <h2>5. Formulario Reactivo (Reactive Forms)</h2>
+      <p class="section-description">Ejemplo completo con validaciones usando Reactive Forms</p>
+
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="reactive-form">
+        <div class="form-grid">
+          <app-input
+            type="text"
+            label="Nombre"
+            placeholder="Juan"
+            formControlName="firstName"
+            [required]="true"
+            helperText="Mínimo 3 caracteres">
+          </app-input>
+
+          <app-input
+            type="text"
+            label="Apellido"
+            placeholder="Pérez"
+            formControlName="lastName"
+            [required]="true">
+          </app-input>
+
+          <app-input
+            type="email"
+            label="Email"
+            placeholder="juan.perez@example.com"
+            formControlName="email"
+            [required]="true"
+            autocomplete="email">
+          </app-input>
+
+          <app-input
+            type="tel"
+            label="Teléfono"
+            placeholder="1234567890"
+            formControlName="phone"
+            helperText="10 dígitos sin espacios"
+            [maxlength]="10">
+          </app-input>
+
+          <app-input
+            type="number"
+            label="Edad"
+            placeholder="25"
+            formControlName="age"
+            [min]="18"
+            [max]="100">
+          </app-input>
+
+          <app-input
+            type="url"
+            label="Sitio Web"
+            placeholder="https://ejemplo.com"
+            formControlName="website"
+            helperText="Debe iniciar con http:// o https://">
+          </app-input>
+
+          <app-input
+            type="password"
+            label="Contraseña"
+            placeholder="********"
+            formControlName="password"
+            [required]="true"
+            helperText="Mínimo 8 caracteres"
+            autocomplete="new-password">
+          </app-input>
+
+          <app-input
+            type="password"
+            label="Confirmar Contraseña"
+            placeholder="********"
+            formControlName="confirmPassword"
+            [required]="true"
+            autocomplete="new-password">
+          </app-input>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            Enviar Formulario
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="resetForm()">
+            Resetear
+          </button>
+        </div>
+
+        <div class="form-status" *ngIf="formSubmitted">
+          <div *ngIf="userForm.valid" class="success-message">
+            ✓ Formulario válido y enviado correctamente
+          </div>
+          <div *ngIf="!userForm.valid" class="error-message">
+            ⚠ Por favor corrija los errores en el formulario
+          </div>
+        </div>
+
+        <div class="form-data" *ngIf="formData">
+          <h3>Datos Enviados:</h3>
+          <pre>{{ formData | json }}</pre>
+        </div>
+      </form>
+    </section>
+
+    <!-- Section 6: Accessibility Features -->
+    <section class="demo-section">
+      <h2>6. Características de Accesibilidad</h2>
+      <p class="section-description">El componente incluye características WCAG 2.1 compliant:</p>
+
+      <ul class="accessibility-list">
+        <li>✓ Asociación correcta entre label e input mediante atributos <code>for</code> e <code>id</code></li>
+        <li>✓ Soporte completo para navegación por teclado (Tab, Shift+Tab)</li>
+        <li>✓ Atributos ARIA apropiados (<code>aria-label</code>, <code>aria-describedby</code>, <code>aria-invalid</code>, <code>aria-required</code>)</li>
+        <li>✓ Mensajes de error con <code>role="alert"</code> y <code>aria-live="polite"</code></li>
+        <li>✓ Estados visuales claros (focus, hover, disabled, error)</li>
+        <li>✓ Soporte para modo de alto contraste</li>
+        <li>✓ Soporte para preferencias de movimiento reducido</li>
+        <li>✓ Tamaño mínimo de fuente en móviles para prevenir zoom automático</li>
+      </ul>
+
+      <div class="demo-item">
+        <h3>Prueba de Accesibilidad</h3>
+        <p>Prueba usar Tab para navegar entre los siguientes inputs:</p>
+        <app-input
+          type="text"
+          label="Campo 1"
+          placeholder="Presiona Tab"
+          ariaLabel="Primer campo de prueba de accesibilidad">
+        </app-input>
+        <app-input
+          type="text"
+          label="Campo 2"
+          placeholder="Presiona Tab nuevamente"
+          ariaLabel="Segundo campo de prueba de accesibilidad">
+        </app-input>
+        <app-input
+          type="text"
+          label="Campo 3"
+          placeholder="Y otra vez Tab"
+          ariaLabel="Tercer campo de prueba de accesibilidad">
+        </app-input>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Componente de Input Reutilizable - Angular {{ title }}</p>
+    <p>Creado con buenas prácticas de accesibilidad y diseño de sistemas</p>
+  </footer>
 </div>
