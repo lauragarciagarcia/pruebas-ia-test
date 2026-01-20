@@ -1,0 +1,58 @@
+<div [ngClass]="containerClasses">
+  <!-- Label -->
+  <label 
+    *ngIf="label" 
+    [for]="inputId" 
+    class="input-label"
+    [class.input-label--required]="required">
+    {{ label }}
+    <span *ngIf="required" class="input-label-required" aria-label="required">*</span>
+  </label>
+
+  <!-- Input wrapper for styling -->
+  <div class="input-wrapper">
+    <input
+      [id]="inputId"
+      [type]="type"
+      [value]="value"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      [required]="required"
+      [attr.aria-label]="ariaLabel || label"
+      [attr.aria-describedby]="hasError ? inputId + '-error' : (helperText ? inputId + '-helper' : null)"
+      [attr.aria-invalid]="hasError"
+      [attr.aria-required]="required"
+      [attr.autocomplete]="autocomplete || null"
+      [attr.maxlength]="maxlength"
+      [attr.minlength]="minlength"
+      [attr.pattern]="pattern || null"
+      [attr.step]="step || null"
+      [attr.min]="min || null"
+      [attr.max]="max || null"
+      class="input-field"
+      (input)="onInputChange($event)"
+      (focus)="onInputFocus()"
+      (blur)="onInputBlur()"
+    />
+  </div>
+
+  <!-- Helper text -->
+  <span 
+    *ngIf="helperText && !hasError" 
+    [id]="inputId + '-helper'" 
+    class="input-helper-text"
+    role="status">
+    {{ helperText }}
+  </span>
+
+  <!-- Error message -->
+  <span 
+    *ngIf="hasError && displayErrorMessage" 
+    [id]="inputId + '-error'" 
+    class="input-error-message"
+    role="alert"
+    aria-live="polite">
+    {{ displayErrorMessage }}
+  </span>
+</div>
