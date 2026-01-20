@@ -6,5 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'pruebas-ia-test';
+  title = 'Button Component Demo';
+  isLoading = false;
+  clickCount = 0;
+
+  handleButtonClick(message: string): void {
+    this.clickCount++;
+    console.log(`${message} - Click count: ${this.clickCount}`);
+    alert(`${message}\nTotal clicks: ${this.clickCount}`);
+  }
+
+  handleAsyncAction(): void {
+    this.isLoading = true;
+    console.log('Starting async action...');
+
+    // Simulate async operation
+    setTimeout(() => {
+      this.isLoading = false;
+      console.log('Async action completed!');
+      alert('Action completed successfully!');
+    }, 2000);
+  }
 }
