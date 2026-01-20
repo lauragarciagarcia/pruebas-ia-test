@@ -15,6 +15,10 @@ export class AppComponent implements OnInit {
   numberValue: number | null = null;
   passwordValue: string = '';
 
+  // Demo values for states
+  disabledValue: string = 'Valor deshabilitado';
+  readonlyValue: string = 'Solo lectura';
+
   // Reactive form
   userForm: FormGroup;
 
