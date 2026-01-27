@@ -1,0 +1,227 @@
+/* ============================================
+   CARD COMPONENT STYLES
+   Accessible, flexible, and reusable card
+   ============================================ */
+
+/* Base card container */
+.card {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  
+  /* Spacing */
+  padding: var(--card-padding, 1.5rem);
+  
+  /* Background */
+  background-color: var(--card-bg, #ffffff);
+  
+  /* Border */
+  border: var(--card-border-width, 1px) solid var(--card-border-color, #e0e0e0);
+  border-radius: var(--card-border-radius, 0.75rem);
+  
+  /* Shadow */
+  box-shadow: var(--card-shadow, 0 2px 8px rgba(0, 0, 0, 0.1));
+  
+  /* Transitions */
+  transition: all var(--card-transition-duration, 0.3s) var(--card-transition-timing, ease-in-out);
+  
+  /* Max width for better readability */
+  max-width: var(--card-max-width, 100%);
+  
+  /* Ensure content doesn't overflow */
+  overflow: var(--card-overflow, hidden);
+}
+
+/* Hover effect for interactive cards */
+.card:hover {
+  box-shadow: var(--card-shadow-hover, 0 4px 16px rgba(0, 0, 0, 0.15));
+  transform: var(--card-hover-transform, translateY(-2px));
+}
+
+/* ============================================
+   CARD HEADER SECTION
+   ============================================ */
+
+.card-header {
+  /* Only show if content exists */
+  display: var(--card-header-display, block);
+  
+  /* Spacing */
+  margin-bottom: var(--card-header-margin-bottom, 1rem);
+  padding-bottom: var(--card-header-padding-bottom, 0.75rem);
+  
+  /* Border separator */
+  border-bottom: var(--card-header-border-width, 1px) solid var(--card-header-border-color, #f0f0f0);
+}
+
+/* Hide header if empty */
+.card-header:empty {
+  display: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Typography for header content */
+.card-header ::ng-deep h1,
+.card-header ::ng-deep h2,
+.card-header ::ng-deep h3,
+.card-header ::ng-deep h4,
+.card-header ::ng-deep h5,
+.card-header ::ng-deep h6 {
+  margin: 0;
+  font-weight: var(--card-header-font-weight, 600);
+  color: var(--card-header-color, #2c3e50);
+  line-height: var(--card-header-line-height, 1.4);
+}
+
+/* ============================================
+   CARD CONTENT SECTION
+   ============================================ */
+
+.card-content {
+  /* Flexible growth */
+  flex: 1;
+  
+  /* Typography */
+  font-size: var(--card-content-font-size, 1rem);
+  line-height: var(--card-content-line-height, 1.6);
+  color: var(--card-content-color, #4a5568);
+  
+  /* Spacing */
+  margin-bottom: var(--card-content-margin-bottom, 0);
+}
+
+/* Add spacing if actions exist */
+.card-actions:not(:empty) ~ .card-content,
+.card-content:has(+ .card-actions:not(:empty)) {
+  margin-bottom: var(--card-content-margin-bottom, 1rem);
+}
+
+/* Typography adjustments for content */
+.card-content ::ng-deep p {
+  margin: 0 0 0.75rem 0;
+}
+
+.card-content ::ng-deep p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   CARD ACTIONS SECTION
+   ============================================ */
+
+.card-actions {
+  /* Layout */
+  display: flex;
+  gap: var(--card-actions-gap, 0.75rem);
+  align-items: center;
+  flex-wrap: wrap;
+  
+  /* Spacing */
+  padding-top: var(--card-actions-padding-top, 0.75rem);
+  
+  /* Border separator */
+  border-top: var(--card-actions-border-width, 1px) solid var(--card-actions-border-color, #f0f0f0);
+}
+
+/* Hide actions if empty */
+.card-actions:empty {
+  display: none;
+  padding: 0;
+  border: none;
+}
+
+/* Button spacing within actions */
+.card-actions ::ng-deep button,
+.card-actions ::ng-deep a {
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .card {
+    padding: var(--card-padding-mobile, 1rem);
+  }
+  
+  .card-header {
+    margin-bottom: var(--card-header-margin-bottom-mobile, 0.75rem);
+  }
+  
+  .card-actions {
+    gap: var(--card-actions-gap-mobile, 0.5rem);
+    flex-direction: var(--card-actions-direction-mobile, row);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: var(--card-padding-small, 0.875rem);
+    border-radius: var(--card-border-radius-small, 0.5rem);
+  }
+  
+  .card-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .card-actions ::ng-deep button,
+  .card-actions ::ng-deep a {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY ENHANCEMENTS
+   ============================================ */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    border-width: var(--card-border-width-high-contrast, 2px);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  .card {
+    background-color: var(--card-bg-dark, #2d3748);
+    border-color: var(--card-border-color-dark, #4a5568);
+    box-shadow: var(--card-shadow-dark, 0 2px 8px rgba(0, 0, 0, 0.3));
+  }
+  
+  .card-header {
+    border-color: var(--card-header-border-color-dark, #4a5568);
+  }
+  
+  .card-header ::ng-deep h1,
+  .card-header ::ng-deep h2,
+  .card-header ::ng-deep h3,
+  .card-header ::ng-deep h4,
+  .card-header ::ng-deep h5,
+  .card-header ::ng-deep h6 {
+    color: var(--card-header-color-dark, #f7fafc);
+  }
+  
+  .card-content {
+    color: var(--card-content-color-dark, #e2e8f0);
+  }
+  
+  .card-actions {
+    border-color: var(--card-actions-border-color-dark, #4a5568);
+  }
+}
