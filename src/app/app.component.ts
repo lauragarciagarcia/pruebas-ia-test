@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Button Component Demo';
+  title = 'UI Components Demo';
   isLoading = false;
   clickCount = 0;
 
