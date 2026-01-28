@@ -1,0 +1,18 @@
+<div class="card">
+  <!-- Optional Header Section (Title) -->
+  <div class="card-header">
+    <ng-content select="[card-header]"></ng-content>
+  </div>
+
+  <!-- Main Content Section -->
+  <div class="card-content">
+    <ng-content select="[card-content]"></ng-content>
+    <!-- Fallback for content without attribute -->
+    <ng-content></ng-content>
+  </div>
+
+  <!-- Optional Actions Section -->
+  <div class="card-actions">
+    <ng-content select="[card-actions]"></ng-content>
+  </div>
+</div>

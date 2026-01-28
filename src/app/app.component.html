@@ -1,7 +1,7 @@
 <div class="demo-container">
   <header class="demo-header">
     <h1>{{ title }}</h1>
-    <p class="subtitle">Reusable, Accessible & Configurable Angular Button Component</p>
+    <p class="subtitle">Reusable, Accessible & Configurable Angular Components</p>
   </header>
 
   <!-- Variants Section -->
@@ -199,6 +199,65 @@
       <h3>Total Button Clicks</h3>
       <p class="stats-number">{{ clickCount }}</p>
       <p class="stats-description">Try clicking the buttons above!</p>
+    </div>
+  </section>
+
+  <!-- Card Component Demo -->
+  <section class="demo-section">
+    <h2>Card Component</h2>
+    <p class="section-description">Flexible card component for grouping content</p>
+
+    <div class="card-demo-grid">
+      <!-- Simple Card -->
+      <app-card>
+        <div card-header>
+          <h3>Welcome Card</h3>
+        </div>
+        <div card-content>
+          <p>This is a simple card component with a header and content. Perfect for displaying information in a clean, organized way.</p>
+        </div>
+      </app-card>
+
+      <!-- Card with Actions -->
+      <app-card>
+        <div card-header>
+          <h3>Card with Actions</h3>
+        </div>
+        <div card-content>
+          <p>This card includes action buttons at the bottom. Great for forms, confirmations, or any interactive content.</p>
+        </div>
+        <div card-actions>
+          <app-button variant="primary" size="small" (clicked)="handleButtonClick('Card action clicked')">
+            Action
+          </app-button>
+          <app-button variant="outline" size="small">
+            Cancel
+          </app-button>
+        </div>
+      </app-card>
+
+      <!-- Content Only Card -->
+      <app-card>
+        <div card-content>
+          <p><strong>Content Only Card</strong></p>
+          <p>This card uses only the content section, without a header or actions. Ideal for simple information display.</p>
+        </div>
+      </app-card>
+
+      <!-- Feature Card -->
+      <app-card>
+        <div card-header>
+          <h3>✨ Feature Highlight</h3>
+        </div>
+        <div card-content>
+          <p>Cards are fully responsive and support dark mode. They're built with CSS custom properties for easy theming.</p>
+        </div>
+        <div card-actions>
+          <app-button variant="ghost" icon="→" iconPosition="right" size="small">
+            Learn More
+          </app-button>
+        </div>
+      </app-card>
     </div>
   </section>
 
