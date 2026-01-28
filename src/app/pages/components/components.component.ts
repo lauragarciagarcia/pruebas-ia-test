@@ -10,6 +10,13 @@ export class ComponentsComponent {
   isLoading = false;
   clickCount = 0;
 
+  // Range Slider Properties
+  excessValue = 1100;
+  temperatureValue = 22;
+  volumeValue = 50;
+  priceValue = 150;
+  disabledValue = 75;
+
   handleButtonClick(message: string): void {
     this.clickCount++;
     console.log(`${message} - Click count: ${this.clickCount}`);
@@ -26,4 +33,43 @@ export class ComponentsComponent {
       alert('Action completed successfully!');
     }, 2000);
   }
+
+  // Range Slider Handlers
+  handleExcessChange(value: number): void {
+    console.log(`Excess level changed to: ${value} €`);
+  }
+
+  handleTemperatureChange(value: number): void {
+    console.log(`Temperature changed to: ${value}°C`);
+  }
+
+  handleVolumeChange(value: number): void {
+    console.log(`Volume changed to: ${value}%`);
+  }
+
+  handlePriceChange(value: number): void {
+    console.log(`Price changed to: $${value}`);
+  }
+
+  // Value Formatters
+  formatCurrency = (value: number): string => {
+    return new Intl.NumberFormat('es-ES', {
+      style: 'currency',
+      currency: 'EUR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(value);
+  };
+
+  formatTemperature = (value: number): string => {
+    return `${value}°C`;
+  };
+
+  formatPercentage = (value: number): string => {
+    return `${value}%`;
+  };
+
+  formatPrice = (value: number): string => {
+    return `$${value}`;
+  };
 }

@@ -1,0 +1,72 @@
+<div class="range-container">
+  <!-- Label/Description -->
+  <div class="range-label" *ngIf="label">
+    {{ label }}
+  </div>
+
+  <!-- Slider Container -->
+  <div class="range-slider">
+    <!-- Value Tooltip -->
+    <div
+      class="range-tooltip"
+      *ngIf="showValueTooltip"
+      [style.left.%]="percentage"
+      [class.range-tooltip--hidden]="disabled">
+      <div class="range-tooltip-content">
+        {{ formattedValue }}
+      </div>
+      <div class="range-tooltip-arrow"></div>
+    </div>
+
+    <!-- Track and Input Container -->
+    <div class="range-track-wrapper">
+      <!-- Track and Input -->
+      <div class="range-track-container">
+        <!-- Filled Track (visual only) -->
+        <div
+          class="range-track-fill"
+          [style.width.%]="percentage"
+          [class.range-track-fill--disabled]="disabled">
+        </div>
+
+        <!-- Native Range Input -->
+        <input
+          type="range"
+          class="range-input"
+          [min]="min"
+          [max]="max"
+          [step]="step"
+          [value]="value"
+          [disabled]="disabled"
+          [attr.aria-label]="computedAriaLabel"
+          [attr.aria-valuemin]="min"
+          [attr.aria-valuemax]="max"
+          [attr.aria-valuenow]="value"
+          [attr.aria-valuetext]="formattedValue"
+          [attr.aria-disabled]="disabled"
+          (input)="onInputChange($event)"
+          (keydown)="onKeyDown($event)"
+        />
+      </div>
+
+      <!-- Tick Marks -->
+      <div class="range-ticks" *ngIf="showTicks">
+        <div
+          *ngFor="let tick of ticks"
+          class="range-tick"
+          [style.left.%]="tick">
+        </div>
+      </div>
+
+      <!-- Min/Max Labels -->
+      <div class="range-labels">
+        <div class="range-label-min">
+          {{ minLabel || min }}
+        </div>
+        <div class="range-label-max">
+          {{ maxLabel || max }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
