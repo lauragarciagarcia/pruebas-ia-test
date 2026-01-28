@@ -75,23 +75,24 @@
 
 .demo-section {
   background: white;
-  padding: 2rem;
+  padding: 2.5rem;
   margin-bottom: 2rem;
   border-radius: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .demo-section h2 {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.75rem 0;
   font-size: 1.75rem;
   color: #2d3748;
   font-weight: 600;
 }
 
 .section-description {
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 2rem 0;
   color: #718096;
   font-size: 1rem;
+  line-height: 1.6;
 }
 
 .button-group {
@@ -199,6 +200,65 @@
   }
 }
 
+/* Range Slider Demo Styles */
+.range-demo {
+  max-width: 536px; /* Exact Figma width */
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  background: linear-gradient(to bottom, #fafafa, #ffffff);
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.current-value {
+  margin-top: 2rem; /* 32px gap like in Figma */
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-size: 1.125rem;
+  color: #2d3748;
+  border: 1px solid #e2e8f0;
+}
+
+.current-value strong {
+  color: #007AB3;
+}
+
+.range-variations {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.range-variation {
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.range-variation h3 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.125rem;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .range-variations {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .range-variation {
+    padding: 1rem;
+  }
+}
+
 @media (max-width: 480px) {
   .demo-container {
     padding: 0.5rem;
@@ -214,5 +274,13 @@
 
   .accessibility-info {
     padding: 1rem;
+  }
+
+  .range-demo {
+    max-width: 100%;
+  }
+
+  .current-value {
+    font-size: 1rem;
   }
 }

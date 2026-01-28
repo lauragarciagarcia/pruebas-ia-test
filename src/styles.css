@@ -1,6 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* ============================================
+   TYPOGRAPHY - ALLIANZ NEO FONT
+   ============================================ */
+
+/*
+  Allianz Neo is a proprietary corporate font.
+  In production, you would add the @font-face declarations here with proper font files.
+  For now, we use high-quality fallback fonts that closely match the design.
+
+  Example @font-face declaration:
+  @font-face {
+    font-family: 'Allianz Neo';
+    src: url('/assets/fonts/AllianzNeo-Regular.woff2') format('woff2'),
+         url('/assets/fonts/AllianzNeo-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+*/
+
+/* ============================================
    GLOBAL DESIGN TOKENS
    Centralized design system variables
    ============================================ */

@@ -204,6 +204,116 @@
     </div>
   </section>
 
+  <!-- Range Slider - Main Example from Figma -->
+  <section class="demo-section">
+    <h2>Range Slider (Figma Design)</h2>
+    <p class="section-description">Accessible range slider matching the Figma design specification</p>
+    <div class="range-demo">
+      <app-range
+        [min]="650"
+        [max]="2000"
+        [step]="50"
+        [(value)]="excessValue"
+        label="Choose an excess level that suits you. Choosing a higher excess can lower your premium. Use the slider to see how each excess level changes your premium."
+        minLabel="650 €"
+        maxLabel="2,000 €"
+        [valueFormatter]="formatCurrency"
+        (valueChange)="handleExcessChange($event)">
+      </app-range>
+      <div class="current-value">
+        <strong>Current selection:</strong> {{ formatCurrency(excessValue) }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Range Slider Variations -->
+  <section class="demo-section">
+    <h2>Range Slider Variations</h2>
+    <p class="section-description">Different configurations and use cases</p>
+
+    <div class="range-variations">
+      <!-- Temperature Slider -->
+      <div class="range-variation">
+        <h3>Temperature Control</h3>
+        <app-range
+          [min]="16"
+          [max]="30"
+          [step]="0.5"
+          [(value)]="temperatureValue"
+          label="Set your preferred temperature"
+          minLabel="16°C"
+          maxLabel="30°C"
+          [valueFormatter]="formatTemperature"
+          (valueChange)="handleTemperatureChange($event)">
+        </app-range>
+      </div>
+
+      <!-- Volume Slider -->
+      <div class="range-variation">
+        <h3>Volume Control</h3>
+        <app-range
+          [min]="0"
+          [max]="100"
+          [step]="5"
+          [(value)]="volumeValue"
+          label="Adjust volume level"
+          minLabel="0%"
+          maxLabel="100%"
+          [valueFormatter]="formatPercentage"
+          (valueChange)="handleVolumeChange($event)">
+        </app-range>
+      </div>
+
+      <!-- Price Range -->
+      <div class="range-variation">
+        <h3>Price Range</h3>
+        <app-range
+          [min]="0"
+          [max]="500"
+          [step]="10"
+          [(value)]="priceValue"
+          label="Select maximum price"
+          minLabel="$0"
+          maxLabel="$500"
+          [valueFormatter]="formatPrice"
+          (valueChange)="handlePriceChange($event)">
+        </app-range>
+      </div>
+
+      <!-- Disabled State -->
+      <div class="range-variation">
+        <h3>Disabled State</h3>
+        <app-range
+          [min]="0"
+          [max]="100"
+          [(value)]="disabledValue"
+          [disabled]="true"
+          label="This slider is disabled"
+          minLabel="0"
+          maxLabel="100">
+        </app-range>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accessibility Features -->
+  <section class="demo-section">
+    <h2>Range Slider Accessibility</h2>
+    <p class="section-description">WCAG 2.1 AA compliant with comprehensive accessibility support</p>
+    <div class="accessibility-info">
+      <ul>
+        <li>✓ Full keyboard navigation (Arrow keys, Home, End, PageUp, PageDown)</li>
+        <li>✓ ARIA attributes (aria-valuemin, aria-valuemax, aria-valuenow, aria-valuetext)</li>
+        <li>✓ Screen reader announcements with formatted values</li>
+        <li>✓ Visible focus indicators for keyboard users</li>
+        <li>✓ High contrast mode support</li>
+        <li>✓ Reduced motion preferences respected</li>
+        <li>✓ Touch-friendly hit areas on mobile devices</li>
+        <li>✓ Disabled state with proper ARIA communication</li>
+      </ul>
+    </div>
+  </section>
+
   <!-- Click Counter -->
   <section class="demo-section stats-section">
     <div class="stats-card">
