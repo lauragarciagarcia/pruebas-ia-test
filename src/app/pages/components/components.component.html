@@ -1,0 +1,222 @@
+<div class="toolbar" role="banner">
+  <button class="back-button" routerLink="/home">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+    </svg>
+    Volver
+  </button>
+  <span>{{ title }}</span>
+  <div class="spacer"></div>
+</div>
+
+<div class="demo-container">
+  <header class="demo-header">
+    <h1>{{ title }}</h1>
+    <p class="subtitle">Demostración de componentes reutilizables y accesibles</p>
+  </header>
+
+  <!-- Variants Section -->
+  <section class="demo-section">
+    <h2>Button Variants</h2>
+    <p class="section-description">Different visual styles for various use cases</p>
+    <div class="button-group">
+      <app-button 
+        variant="primary" 
+        (clicked)="handleButtonClick('Primary button clicked')">
+        Primary
+      </app-button>
+      
+      <app-button 
+        variant="secondary" 
+        (clicked)="handleButtonClick('Secondary button clicked')">
+        Secondary
+      </app-button>
+      
+      <app-button 
+        variant="outline" 
+        (clicked)="handleButtonClick('Outline button clicked')">
+        Outline
+      </app-button>
+      
+      <app-button 
+        variant="ghost" 
+        (clicked)="handleButtonClick('Ghost button clicked')">
+        Ghost
+      </app-button>
+      
+      <app-button 
+        variant="danger" 
+        (clicked)="handleButtonClick('Danger button clicked')">
+        Danger
+      </app-button>
+    </div>
+  </section>
+
+  <!-- Sizes Section -->
+  <section class="demo-section">
+    <h2>Button Sizes</h2>
+    <p class="section-description">Three different sizes to fit your layout needs</p>
+    <div class="button-group">
+      <app-button 
+        size="small" 
+        (clicked)="handleButtonClick('Small button clicked')">
+        Small
+      </app-button>
+      
+      <app-button 
+        size="medium" 
+        (clicked)="handleButtonClick('Medium button clicked')">
+        Medium
+      </app-button>
+      
+      <app-button 
+        size="large" 
+        (clicked)="handleButtonClick('Large button clicked')">
+        Large
+      </app-button>
+    </div>
+  </section>
+
+  <!-- States Section -->
+  <section class="demo-section">
+    <h2>Button States</h2>
+    <p class="section-description">Disabled and loading states with proper accessibility</p>
+    <div class="button-group">
+      <app-button 
+        variant="primary" 
+        [disabled]="true">
+        Disabled
+      </app-button>
+      
+      <app-button 
+        variant="primary" 
+        [loading]="isLoading"
+        (clicked)="handleAsyncAction()">
+        {{ isLoading ? 'Loading...' : 'Click to Load' }}
+      </app-button>
+      
+      <app-button 
+        variant="outline" 
+        [loading]="true">
+        Loading State
+      </app-button>
+    </div>
+  </section>
+
+  <!-- Icons Section -->
+  <section class="demo-section">
+    <h2>Buttons with Icons</h2>
+    <p class="section-description">Support for left and right positioned icons</p>
+    <div class="button-group">
+      <app-button 
+        variant="primary" 
+        icon="✓" 
+        iconPosition="left"
+        (clicked)="handleButtonClick('Icon left button clicked')">
+        Save Changes
+      </app-button>
+      
+      <app-button 
+        variant="secondary" 
+        icon="→" 
+        iconPosition="right"
+        (clicked)="handleButtonClick('Icon right button clicked')">
+        Next Step
+      </app-button>
+      
+      <app-button 
+        variant="outline" 
+        icon="↻"
+        (clicked)="handleButtonClick('Refresh button clicked')">
+        Refresh
+      </app-button>
+      
+      <app-button 
+        variant="danger" 
+        icon="✕"
+        (clicked)="handleButtonClick('Delete button clicked')">
+        Delete
+      </app-button>
+    </div>
+  </section>
+
+  <!-- Full Width Section -->
+  <section class="demo-section">
+    <h2>Full Width Button</h2>
+    <p class="section-description">Buttons that span the full width of their container</p>
+    <div class="full-width-demo">
+      <app-button 
+        variant="primary" 
+        [fullWidth]="true"
+        size="large"
+        (clicked)="handleButtonClick('Full width button clicked')">
+        Full Width Button
+      </app-button>
+    </div>
+  </section>
+
+  <!-- Accessibility Section -->
+  <section class="demo-section">
+    <h2>Accessibility Features</h2>
+    <p class="section-description">WCAG compliant with proper ARIA attributes and keyboard navigation</p>
+    <div class="accessibility-info">
+      <ul>
+        <li>✓ Keyboard navigation support (Tab, Enter, Space)</li>
+        <li>✓ Focus indicators for keyboard users</li>
+        <li>✓ ARIA attributes (aria-label, aria-disabled, aria-busy)</li>
+        <li>✓ Proper disabled state handling</li>
+        <li>✓ Loading state communication to screen readers</li>
+        <li>✓ High contrast mode support</li>
+        <li>✓ Reduced motion preferences respected</li>
+      </ul>
+    </div>
+    <div class="button-group">
+      <app-button 
+        variant="primary" 
+        ariaLabel="Submit form with current data"
+        (clicked)="handleButtonClick('Accessible button clicked')">
+        Submit
+      </app-button>
+    </div>
+  </section>
+
+  <!-- Combined Examples -->
+  <section class="demo-section">
+    <h2>Combined Features</h2>
+    <p class="section-description">Combining multiple features together</p>
+    <div class="button-group">
+      <app-button 
+        variant="primary" 
+        size="large" 
+        icon="✓"
+        (clicked)="handleButtonClick('Large primary with icon clicked')">
+        Confirm Purchase
+      </app-button>
+      
+      <app-button 
+        variant="outline" 
+        size="small" 
+        icon="✕"
+        iconPosition="right"
+        (clicked)="handleButtonClick('Small outline with icon clicked')">
+        Cancel
+      </app-button>
+    </div>
+  </section>
+
+  <!-- Click Counter -->
+  <section class="demo-section stats-section">
+    <div class="stats-card">
+      <h3>Total Button Clicks</h3>
+      <p class="stats-number">{{ clickCount }}</p>
+      <p class="stats-description">Try clicking the buttons above!</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="demo-footer">
+    <p>🎯 All buttons are fully accessible and follow WCAG 2.1 guidelines</p>
+    <p>🎨 Customizable through CSS variables (design tokens)</p>
+    <p>⚡ Production-ready and performance optimized</p>
+  </footer>
+</div>
