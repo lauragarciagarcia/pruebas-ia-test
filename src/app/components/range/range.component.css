@@ -1,0 +1,297 @@
+/* ============================================
+   RANGE COMPONENT STYLES
+   Accessible, customizable range slider
+   ============================================ */
+
+/* Container */
+.range-container {
+  width: 100%;
+  font-family: var(--range-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+}
+
+.range-container.range-disabled {
+  opacity: var(--range-disabled-opacity, 0.6);
+  cursor: not-allowed;
+}
+
+/* Label */
+.range-label {
+  display: block;
+  margin-bottom: var(--range-label-margin-bottom, 0.5rem);
+  font-size: var(--range-label-font-size, 0.875rem);
+  font-weight: var(--range-label-font-weight, 500);
+  color: var(--range-label-color, #333);
+}
+
+/* Wrapper */
+.range-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Tooltip */
+.range-tooltip {
+  position: absolute;
+  top: var(--range-tooltip-top, -45px);
+  transform: translateX(-50%);
+  z-index: var(--range-tooltip-z-index, 10);
+  pointer-events: none;
+  transition: left var(--range-transition-duration, 0.1s) ease-out;
+}
+
+.range-tooltip-content {
+  display: inline-block;
+  padding: var(--range-tooltip-padding, 0.5rem 0.75rem);
+  background-color: var(--range-tooltip-bg, #ffffff);
+  color: var(--range-tooltip-color, #0077B6);
+  font-size: var(--range-tooltip-font-size, 1rem);
+  font-weight: var(--range-tooltip-font-weight, 600);
+  border-radius: var(--range-tooltip-border-radius, 0.375rem);
+  box-shadow: var(--range-tooltip-shadow, 0 2px 8px rgba(0, 0, 0, 0.15));
+  white-space: nowrap;
+}
+
+/* Tooltip arrow */
+.range-tooltip-content::after {
+  content: '';
+  position: absolute;
+  bottom: var(--range-tooltip-arrow-bottom, -6px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: var(--range-tooltip-arrow-size, 6px) solid transparent;
+  border-right: var(--range-tooltip-arrow-size, 6px) solid transparent;
+  border-top: var(--range-tooltip-arrow-size, 6px) solid var(--range-tooltip-bg, #ffffff);
+}
+
+/* Input Container */
+.range-input-container {
+  position: relative;
+  width: 100%;
+  height: var(--range-input-height, 60px);
+  display: flex;
+  align-items: center;
+}
+
+/* Range Input */
+.range-input {
+  position: relative;
+  width: 100%;
+  height: var(--range-thumb-size, 24px);
+  margin: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.range-input:disabled {
+  cursor: not-allowed;
+}
+
+/* Focus styles for accessibility */
+.range-input:focus-visible {
+  outline: none;
+}
+
+.range-input:focus-visible::-webkit-slider-thumb {
+  box-shadow: 
+    0 0 0 var(--range-focus-ring-width, 3px) var(--range-focus-ring-color, rgba(0, 119, 182, 0.3)),
+    var(--range-thumb-shadow, 0 2px 6px rgba(0, 0, 0, 0.2));
+}
+
+.range-input:focus-visible::-moz-range-thumb {
+  box-shadow: 
+    0 0 0 var(--range-focus-ring-width, 3px) var(--range-focus-ring-color, rgba(0, 119, 182, 0.3)),
+    var(--range-thumb-shadow, 0 2px 6px rgba(0, 0, 0, 0.2));
+}
+
+/* Webkit (Chrome, Safari, Edge) Track */
+.range-input::-webkit-slider-track {
+  width: 100%;
+  height: var(--range-track-height, 8px);
+  background: transparent;
+  border: none;
+  border-radius: var(--range-track-border-radius, 4px);
+}
+
+/* Webkit Thumb */
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--range-thumb-size, 24px);
+  height: var(--range-thumb-size, 24px);
+  background: var(--range-thumb-bg, #ffffff);
+  border: var(--range-thumb-border-width, 2px) solid var(--range-thumb-border-color, #e0e0e0);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--range-thumb-shadow, 0 2px 6px rgba(0, 0, 0, 0.2));
+  transition: transform var(--range-transition-duration, 0.15s) ease-in-out;
+  position: relative;
+  margin-top: calc((var(--range-track-height, 8px) - var(--range-thumb-size, 24px)) / 2);
+}
+
+.range-input:hover:not(:disabled)::-webkit-slider-thumb {
+  transform: scale(1.1);
+}
+
+.range-input:active:not(:disabled)::-webkit-slider-thumb {
+  transform: scale(0.95);
+}
+
+/* Firefox Track */
+.range-input::-moz-range-track {
+  width: 100%;
+  height: var(--range-track-height, 8px);
+  background: transparent;
+  border: none;
+  border-radius: var(--range-track-border-radius, 4px);
+}
+
+/* Firefox Thumb */
+.range-input::-moz-range-thumb {
+  width: var(--range-thumb-size, 24px);
+  height: var(--range-thumb-size, 24px);
+  background: var(--range-thumb-bg, #ffffff);
+  border: var(--range-thumb-border-width, 2px) solid var(--range-thumb-border-color, #e0e0e0);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--range-thumb-shadow, 0 2px 6px rgba(0, 0, 0, 0.2));
+  transition: transform var(--range-transition-duration, 0.15s) ease-in-out;
+}
+
+.range-input:hover:not(:disabled)::-moz-range-thumb {
+  transform: scale(1.1);
+}
+
+.range-input:active:not(:disabled)::-moz-range-thumb {
+  transform: scale(0.95);
+}
+
+/* Custom Track with Progress */
+.range-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  height: var(--range-track-height, 8px);
+  background-color: var(--range-track-bg, #D1D5DB);
+  border-radius: var(--range-track-border-radius, 4px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.range-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--range-progress-bg, #0077B6);
+  border-radius: var(--range-track-border-radius, 4px);
+  transition: width var(--range-transition-duration, 0.1s) ease-out;
+}
+
+/* Tick Marks */
+.range-ticks {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  height: var(--range-track-height, 8px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.range-tick {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--range-tick-width, 2px);
+  height: var(--range-tick-height, 16px);
+  background-color: var(--range-tick-color, #333);
+}
+
+.range-tick-min {
+  left: 0;
+}
+
+.range-tick-max {
+  right: 0;
+}
+
+/* Min/Max Labels */
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--range-labels-margin-top, 0.5rem);
+  font-size: var(--range-labels-font-size, 0.875rem);
+  color: var(--range-labels-color, #333);
+  font-weight: var(--range-labels-font-weight, 500);
+}
+
+.range-label-min,
+.range-label-max {
+  display: inline-block;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .range-tooltip {
+    top: var(--range-tooltip-top-mobile, -40px);
+  }
+
+  .range-tooltip-content {
+    font-size: var(--range-tooltip-font-size-mobile, 0.875rem);
+    padding: var(--range-tooltip-padding-mobile, 0.375rem 0.625rem);
+  }
+
+  .range-labels {
+    font-size: var(--range-labels-font-size-mobile, 0.75rem);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY ENHANCEMENTS
+   ============================================ */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .range-input::-webkit-slider-thumb {
+    border-width: 3px;
+  }
+
+  .range-input::-moz-range-thumb {
+    border-width: 3px;
+  }
+
+  .range-track {
+    border: 1px solid currentColor;
+  }
+
+  .range-tick {
+    width: 3px;
+    background-color: currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .range-input::-webkit-slider-thumb,
+  .range-input::-moz-range-thumb,
+  .range-progress,
+  .range-tooltip {
+    transition: none;
+  }
+
+  .range-input:hover:not(:disabled)::-webkit-slider-thumb,
+  .range-input:hover:not(:disabled)::-moz-range-thumb {
+    transform: none;
+  }
+}

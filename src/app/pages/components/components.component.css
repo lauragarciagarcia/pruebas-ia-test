@@ -128,10 +128,16 @@
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   text-align: center;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .stats-card {
   padding: 1rem;
+  flex: 1;
+  min-width: 250px;
 }
 
 .stats-card h3 {
@@ -166,6 +172,56 @@
   margin: 0.5rem 0;
   color: #4a5568;
   font-size: 1rem;
+}
+
+/* Range Component Demo Styles */
+.range-demo-group {
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  background: #f7fafc;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.range-demo-group:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.range-demo-group h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.25rem;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.range-description {
+  margin: 0 0 1.5rem 0;
+  color: #4a5568;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.range-current-value {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 0.375rem;
+  text-align: center;
+  color: #2d3748;
+  font-size: 0.95rem;
+  border: 1px solid #e2e8f0;
+}
+
+.range-current-value strong {
+  color: #0077B6;
+  font-size: 1.1rem;
+}
+
+.accessibility-info h3 {
+  margin: 0 0 1rem 0;
+  color: #2d3748;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {
