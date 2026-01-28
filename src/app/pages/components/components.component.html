@@ -204,12 +204,118 @@
     </div>
   </section>
 
+  <!-- Range Slider Section -->
+  <section class="demo-section">
+    <h2>Range Slider Component</h2>
+    <p class="section-description">Accessible range input (slider) component with WCAG 2.1 AA compliance</p>
+
+    <!-- Figma Design Example -->
+    <div class="range-demo-group">
+      <h3>Figma Design Example - Excess Level Selector</h3>
+      <p class="range-description">Choose an excess level that suits you. Choosing a higher excess can lower your premium.</p>
+      <app-range
+        [min]="650"
+        [max]="2000"
+        [value]="rangeValue"
+        [step]="50"
+        [showCurrency]="true"
+        currency="€"
+        [showTooltip]="true"
+        [showMinMaxLabels]="true"
+        [showTicks]="true"
+        ariaLabel="Choose an excess level"
+        (valueChange)="handleRangeChange($event)">
+      </app-range>
+      <p class="range-current-value">Current excess level: <strong>{{ rangeValue }} €</strong></p>
+    </div>
+
+    <!-- Basic Range -->
+    <div class="range-demo-group">
+      <h3>Basic Range (0-100)</h3>
+      <app-range
+        [min]="0"
+        [max]="100"
+        [value]="basicRangeValue"
+        [step]="1"
+        label="Volume"
+        [showTooltip]="true"
+        [showMinMaxLabels]="true"
+        [showTicks]="true"
+        ariaLabel="Adjust volume level"
+        (valueChange)="handleBasicRangeChange($event)">
+      </app-range>
+      <p class="range-current-value">Current value: <strong>{{ basicRangeValue }}</strong></p>
+    </div>
+
+    <!-- Disabled State -->
+    <div class="range-demo-group">
+      <h3>Disabled State</h3>
+      <app-range
+        [min]="0"
+        [max]="100"
+        [value]="50"
+        [disabled]="true"
+        label="Disabled Range"
+        ariaLabel="Disabled range slider">
+      </app-range>
+    </div>
+
+    <!-- Without Tooltip -->
+    <div class="range-demo-group">
+      <h3>Without Tooltip</h3>
+      <app-range
+        [min]="0"
+        [max]="100"
+        [value]="30"
+        [showTooltip]="false"
+        label="Brightness"
+        ariaLabel="Adjust brightness">
+      </app-range>
+    </div>
+
+    <!-- Custom Step -->
+    <div class="range-demo-group">
+      <h3>Large Steps (Increments of 10)</h3>
+      <app-range
+        [min]="0"
+        [max]="100"
+        [value]="customStepValue"
+        [step]="10"
+        label="Quality Level"
+        [showTooltip]="true"
+        ariaLabel="Select quality level"
+        (valueChange)="handleCustomStepChange($event)">
+      </app-range>
+      <p class="range-current-value">Selected quality: <strong>{{ customStepValue }}%</strong></p>
+    </div>
+
+    <!-- Accessibility Features -->
+    <div class="accessibility-info">
+      <h3>Accessibility Features</h3>
+      <ul>
+        <li>✓ Full keyboard navigation (Arrow keys, Home, End, Page Up/Down)</li>
+        <li>✓ ARIA attributes (aria-valuemin, aria-valuemax, aria-valuenow, aria-valuetext)</li>
+        <li>✓ Screen reader support with live regions</li>
+        <li>✓ Visible focus indicators</li>
+        <li>✓ High contrast mode support</li>
+        <li>✓ Reduced motion preferences respected</li>
+        <li>✓ Proper label association</li>
+        <li>✓ WCAG 2.1 AA compliant color contrast</li>
+      </ul>
+    </div>
+  </section>
+
   <!-- Click Counter -->
   <section class="demo-section stats-section">
     <div class="stats-card">
       <h3>Total Button Clicks</h3>
       <p class="stats-number">{{ clickCount }}</p>
       <p class="stats-description">Try clicking the buttons above!</p>
+    </div>
+    <div class="stats-card">
+      <h3>Range Interactions</h3>
+      <p class="stats-number">{{ rangeChangeCount }}</p>
+      <p class="stats-description">Number of range value changes</p>
     </div>
   </section>
 
