@@ -1,0 +1,65 @@
+<div class="range-container" [class.range-disabled]="disabled">
+  <!-- Label -->
+  <label 
+    *ngIf="label" 
+    class="range-label"
+    [attr.for]="'range-input-' + label">
+    {{ label }}
+  </label>
+
+  <!-- Range Input Wrapper -->
+  <div class="range-wrapper">
+    <!-- Value Tooltip -->
+    <div 
+      *ngIf="showTooltip" 
+      class="range-tooltip"
+      [style.left.%]="progressPercentage"
+      aria-live="polite"
+      aria-atomic="true">
+      <span class="range-tooltip-content">{{ formattedValue }}</span>
+    </div>
+
+    <!-- Range Input -->
+    <div class="range-input-container">
+      <input
+        type="range"
+        class="range-input"
+        [id]="label ? 'range-input-' + label : undefined"
+        [min]="min"
+        [max]="max"
+        [step]="step"
+        [value]="currentValue"
+        [disabled]="disabled"
+        [attr.aria-label]="ariaLabel || label || 'Range slider'"
+        [attr.aria-valuemin]="min"
+        [attr.aria-valuemax]="max"
+        [attr.aria-valuenow]="currentValue"
+        [attr.aria-valuetext]="formattedValue"
+        [attr.aria-disabled]="disabled"
+        (input)="onInput($event)"
+        (change)="onValueChange($event)"
+        (blur)="onBlur()"
+      />
+      
+      <!-- Progress Track (filled portion) -->
+      <div class="range-track">
+        <div 
+          class="range-progress" 
+          [style.width.%]="progressPercentage">
+        </div>
+      </div>
+
+      <!-- Tick Marks -->
+      <div *ngIf="showTicks" class="range-ticks">
+        <span class="range-tick range-tick-min"></span>
+        <span class="range-tick range-tick-max"></span>
+      </div>
+    </div>
+
+    <!-- Min/Max Labels -->
+    <div *ngIf="showMinMaxLabels" class="range-labels">
+      <span class="range-label-min">{{ formattedMin }}</span>
+      <span class="range-label-max">{{ formattedMax }}</span>
+    </div>
+  </div>
+</div>
